@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stream Broadcasts</title>
+    <style>
+        .center-image {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Stream Broadcasts</h1>
+    <form action="/result2" method="GET" id="result-form">
+        <table>
+            <tr>
+                <th>Select Stream</th>
+                <th>Start Time</th>
+                <th>Duration</th>
+                <th>Title</th>
+                <th>Image</th>
+            </tr>
+            {% for url, data in stream_data.items() %}
+            <tr>
+                <td>
+                    <input type="radio" name="playlist" value="{{ url }}">
+                </td>
+                <td>{{ data["Start_time"] }}</td>
+                <td>{{ data["Duration"] }}</td>
+                <td>
+                    <a href="{{ url }}">{{ data["Title"] }}</a>
+                </td>
+                <td class="center-image">
+                    <img src="{{ data["Img_URL"] }}" alt="{{ data["Title"] }}" width="65" height="36">
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <input type="submit" value="Submit">
+    </form>
+    <script>
+        // JavaScript to set the value of the hidden input field before submitting the form
+        document.getElementById('result-form').addEventListener('submit', function () {
+            const selectedPlaylist = document.querySelector('input[name="playlist"]:checked');
+            if (selectedPlaylist) {
+                const playlistInput = document.getElementById('playlist-input');
+                playlistInput.value = selectedPlaylist.value;
+            }
+        });
+    </script>
+</body>
+</html>

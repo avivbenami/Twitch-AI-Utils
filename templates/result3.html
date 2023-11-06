@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Processing App</title>
+</head>
+<body>
+    <h1>Audio Processing and Summarization</h1>
+    <h2>Listen to the Processed Audio:</h2>
+    <audio controls>
+        <source src="/static/temp_track.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <h2>Transcription:</h2>
+    <textarea id="transcription" rows="8" cols="80" readonly>{{ response['transcription'] }}</textarea>
+
+    <h2>Summarization:</h2>
+    <textarea id="summarization" rows="8" cols="80" readonly>{{ response['summarization'] }}</textarea>
+
+</body>
+</html>
